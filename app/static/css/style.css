@@ -149,10 +149,21 @@ button.cartButton {
   border: 2px solid white;
   width: 20px;
   height: 20px;
+  transition: 0.15s ease-in-out;
 }
 
 button.cartButton:hover {
   cursor: pointer;
+  background-color: white;
+}
+
+button.cartButton svg {
+  fill: white;
+  transition: 0.15s ease-in-out;
+}
+
+button.cartButton:hover svg {
+  fill: var(--red);
 }
 
 .counter {
