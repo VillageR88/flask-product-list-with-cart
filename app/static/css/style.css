@@ -55,14 +55,14 @@ body {
   overflow-x: hidden;
   box-sizing: border-box;
   font-family: var(--redHatText);
+  /* padding-inline: 112px; */
+  padding-block: 88px;
 }
 
 form {
   display: flex;
   flex-direction: row;
   gap: 32px;
-  padding-inline: 112px;
-  padding-block: 88px;
   width: 100%;
   height: 100%;
   max-width: 1216px;
@@ -432,4 +432,19 @@ body:has(.divCartWithValue[style*="display: flex"]) #cartPlaceholder {
   color: var(--rose-500);
   font-size: 14px;
   font-weight: 600;
+}
+
+@media (max-width: 1280px) {
+  form {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .firstWrapper {
+    max-width: 688px;
+  }
+
+  .secondWrapper {
+    max-width: 688px;
+  }
 }
