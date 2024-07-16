@@ -38,6 +38,156 @@ li {
   flex-direction: column;
 }
 
+.popup {
+  position: fixed;
+  /*debugging*/
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  padding: 0%;
+  background-color: hsla(0, 0%, 0%, 0.5);
+  align-items: center;
+  justify-content: center;
+}
+
+.popup > div {
+  display: flex;
+  flex-direction: column;
+  max-width: 592px;
+  width: 100%;
+  background-color: white;
+  border-radius: 12px;
+  box-sizing: border-box;
+  padding: 40px;
+  gap: 32px;
+}
+
+.popup > div > div:nth-child(1) {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+section > p {
+  font-size: 16px;
+}
+
+.popup > div > ul {
+  border-radius: 8px;
+  background-color: var(--rose-50);
+  padding: 24px;
+}
+
+/*.dessertElement:has(.divCartWithValue[style*="display: flex"]) .imageProduct */
+/* .popup>div>ul:has(li[style*="display: flex"]) {} */
+
+.popup > div > ul > li {
+  display: none;
+  flex-direction: column;
+  margin: 0px;
+}
+
+.popup > div > ul > li > hr {
+  margin-block: 16px;
+}
+
+.popup > div > ul > li:last-of-type > hr {
+  margin-block: 24px;
+}
+
+.popup > div > ul > li > div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.popup > div > ul > li > div > div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+}
+
+.popup > div > ul > li > div > div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+}
+
+.popup > div > ul > li > div > div > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.popup > div > ul > li > div > div > div > span {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--rose-900);
+}
+
+.popup > div > ul > li > div > div > div > div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+.popup > div > ul > li > div > span {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--rose-900);
+}
+
+.popup > div > ul > li > div > span::before {
+  content: "$";
+}
+
+.popup > div > ul > div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.popup > div > ul > div > span:nth-child(1) {
+  font-size: 14px;
+  color: var(--rose-900);
+}
+
+.popup > div > ul > div > span:nth-child(2) {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--rose-900);
+}
+
+.popup > div > ul > div > span:nth-child(2)::before {
+  content: "$";
+}
+
+.imageThumbnail {
+  width: 48px;
+  height: auto;
+  border-radius: 4px;
+}
+
+#summaryLi {
+  width: 100%;
+}
+
 .dessertElement:has(.divCartWithValue[style*="display: flex"]) .imageProduct {
   outline: 2px solid var(--red);
 }
@@ -108,7 +258,6 @@ img.cartIcon {
   width: 21px;
   height: 20px;
   display: block;
-  z-index: 3;
 }
 
 .divCart:hover {
@@ -202,11 +351,13 @@ li div {
   flex-direction: column;
 }
 
-h1 {
+h1,
+section h2 {
   color: var(--rose-900);
   font-size: 40px;
   letter-spacing: 0.12px;
   margin: 0px;
+  font-weight: 700;
 }
 
 p {
@@ -331,13 +482,13 @@ div div .cartRow {
   gap: 16px;
 }
 
-.cartRow span:nth-child(1) {
+.itemCount {
   font-size: 14px;
   font-weight: 600;
   color: var(--red);
 }
 
-.cartRow span:nth-child(1)::after {
+.itemCount::after {
   content: "x";
 }
 
@@ -408,11 +559,11 @@ body:has(.divCartWithValue[style*="display: flex"]) #infoCarbonNeutral {
   padding-inline: 0.8px;
 }
 
-body:has(.divCartWithValue[style*="display: flex"]) #confirmOrder {
+body:has(.divCartWithValue[style*="display: flex"]) .buttonType1 {
   display: flex;
 }
 
-#confirmOrder {
+.buttonType1 {
   height: 53px;
   width: 100%;
   border-radius: 999px;
@@ -420,14 +571,14 @@ body:has(.divCartWithValue[style*="display: flex"]) #confirmOrder {
   background-color: var(--red);
   color: white;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 500;
   transition: 0.15s ease-in-out;
   display: none;
   justify-content: center;
   align-items: center;
 }
 
-#confirmOrder:hover {
+.buttonType1:hover {
   cursor: pointer;
   background-color: #952c0b;
 }
