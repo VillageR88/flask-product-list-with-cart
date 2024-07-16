@@ -18,8 +18,8 @@
                 {% for item in data %}
                 <li class="dessertElement" id="{{ item.id }}">
                     <div>
-                        <img class="imageDesktop" src="{{ url_for('static', filename='/' + item.image.desktop) }}"
-                            alt="{{ item.name }}">
+                        <img class="imageProduct imageDesktop"
+                            src="{{ url_for('static', filename='/' + item.image.desktop) }}" alt="{{ item.name }}">
                         <div id="{{ item.name }}divCartWithValue" class="divCartWithValue">
                             <button aria-label="{{ item.name }} decrease" onclick="decrementValue('{{ item.name }}')"
                                 class="cartButton" type="button" id="decrement"><svg xmlns="http://www.w3.org/2000/svg"
@@ -62,8 +62,10 @@
                         <div>
                             <div class="cartRow">
                                 <span id="{{ item.name }}itemCount" class="itemCount"></span>
-                                <span>@ ${{ "%.2f" | format(item.price) }}</span>
-                                <span id="{{ item.name }}rowSummary">{{(item.price)}}</span>
+                                <div id="moneySide">
+                                    <span>@ ${{ "%.2f" | format(item.price) }}</span>
+                                    <span id="{{ item.name }}rowSummary">{{(item.price)}}</span>
+                                </div>
                             </div>
                             <button id="deleteButton" title="Remove {{item.name}} from cart"
                                 onclick="deleteItem('{{ item.name }}')" type="button">

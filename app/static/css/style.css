@@ -38,7 +38,11 @@ li {
   flex-direction: column;
 }
 
-.imageDesktop {
+.dessertElement:has(.divCartWithValue[style*="display: flex"]) .imageProduct {
+  outline: 2px solid var(--red);
+}
+
+.imageProduct {
   width: 100%;
   max-width: 250px;
   border-radius: 8px;
@@ -321,14 +325,10 @@ hr {
   display: none;
 }
 
-/* .dessertElement:has(.counter[value*="0"]) {
-  border: 1px solid var(--red);
-} */
-
-.cartRow {
+div div .cartRow {
   display: flex;
   flex-direction: row;
-  gap: 8px;
+  gap: 16px;
 }
 
 .cartRow span:nth-child(1) {
@@ -341,19 +341,19 @@ hr {
   content: "x";
 }
 
-.cartRow span:nth-child(2) {
+#moneySide span:nth-child(1) {
   font-size: 14px;
   font-weight: 400;
   color: var(--rose-500);
 }
 
-.cartRow span:nth-child(3) {
+#moneySide span:nth-child(2) {
   font-size: 14px;
   font-weight: 600;
   color: var(--rose-500);
 }
 
-.cartRow span:nth-child(3)::before {
+#moneySide span:nth-child(2)::before {
   content: "$";
 }
 
@@ -484,7 +484,7 @@ body:has(.divCartWithValue[style*="display: flex"]) #cartPlaceholder {
     max-width: 688px;
   }
 
-  .imageDesktop {
+  .imageProduct {
     width: 100%;
     max-width: 213px;
   }
@@ -501,7 +501,6 @@ body:has(.divCartWithValue[style*="display: flex"]) #cartPlaceholder {
 }
 
 @media (max-width: 640px) {
-
   body {
     padding: 24px;
   }
@@ -523,8 +522,7 @@ body:has(.divCartWithValue[style*="display: flex"]) #cartPlaceholder {
     max-height: 100%;
   }
 
-
-  .imageDesktop {
+  .imageProduct {
     max-width: 327px;
   }
 }
