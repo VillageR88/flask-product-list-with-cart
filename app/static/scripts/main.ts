@@ -1,8 +1,8 @@
 const totalValue = document.getElementById("totalValue");
 const cartItemsCount = document.getElementById("cartItemsCount");
-const itemPrice = document.getElementById("price");
 
 function decrementValue(id) {
+    const itemPrice = document.getElementById(`${id}itemPrice`);
     const dessertCount = document.getElementById(`${id}dessertCount`);
     const cartElement = document.getElementById(`${id}cartElement`);
     const cartElementItemCount = document.getElementById(`${id}itemCount`);
@@ -23,6 +23,7 @@ function decrementValue(id) {
 }
 
 function incrementValue(id) {
+    const itemPrice = document.getElementById(`${id}itemPrice`);
     const dessertCount = document.getElementById(`${id}dessertCount`);
     const divCartWithValue = document.getElementById(`${id}divCartWithValue`);
     const cartElement = document.getElementById(`${id}cartElement`);
@@ -41,6 +42,7 @@ function incrementValue(id) {
 }
 
 function deleteItem(id) {
+    const itemPrice = document.getElementById(`${id}itemPrice`);
     const dessertCount = document.getElementById(`${id}dessertCount`);
     const divCartWithValue = document.getElementById(`${id}divCartWithValue`);
     const cartElement = document.getElementById(`${id}cartElement`);
