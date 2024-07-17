@@ -119,5 +119,27 @@
         "name": "Pavlova",
         "category": "Meringue dessert",
         "price": 7.00
+    },
+    {
+        "image": {
+            "thumbnail": "./assets/images/oreo-dessert.jpeg",
+            "mobile": "./assets/images/oreo-dessert.jpeg",
+            "tablet": "./assets/images/oreo-dessert.jpeg",
+            "desktop": "./assets/images/oreo-dessert.jpeg"
+        },
+        "name": "Oreo Dessert",
+        "category": "Dessert",
+        "price": 6.50
+    },
+    {
+        "image": {
+            "thumbnail": "./assets/images/kiwi-dessert.jpeg",
+            "mobile": "./assets/images/kiwi-dessert.jpeg",
+            "tablet": "./assets/images/kiwi-dessert.jpeg",
+            "desktop": "./assets/images/kiwi-dessert.jpeg"
+        },
+        "name": "Kiwi Dessert",
+        "category": "Dessert",
+        "price": 6.50
     }
 ]
