@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Product list with cart">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <link rel="icon" href="{{ url_for('static', filename='images/favicon-32x32.png') }}" sizes="32x32" type="image/png">
+    <link rel="icon" href="{{ url_for('static', filename='assets/images/favicon-32x32.png') }}" sizes="32x32"
+        type="image/png">
     <title>{{ siteTitle }}</title>
 </head>
 
@@ -34,7 +35,7 @@
                         <div>
                             <!-- TO DO IMAGE SIZES FOR SCREENS -->
                             <img class="imageThumbnail"
-                                src="{{ url_for('static', filename='/' + item.image.thumbnail) }}"
+                                src="{{ url_for('static', filename='./' + item.image.thumbnail) }}"
                                 alt="{{ item.name }}">
                             <div>
                                 <span>{{ item.name }}</span>
@@ -67,10 +68,10 @@
                     <div>
                         <picture>
                             <source media="(min-width: 1281px)"
-                                srcset="{{ url_for('static', filename='/' + item.image.desktop) }}">
+                                srcset="{{ url_for('static', filename='./' + item.image.desktop) }}">
                             <source media="(min-width: 641px)"
-                                srcset="{{ url_for('static', filename='/' + item.image.tablet) }}">
-                            <img class="imageProduct" src="{{ url_for('static', filename='/' + item.image.mobile) }}"
+                                srcset="{{ url_for('static', filename='./' + item.image.tablet) }}">
+                            <img class="imageProduct" src="{{ url_for('static', filename='./' + item.image.mobile) }}"
                                 alt="{{ item.name }}">
                         </picture>
                         <div id="{{ item.name }}divCartWithValue" class="divCartWithValue">
@@ -90,7 +91,7 @@
                         </div>
                         <button id="{{ item.name }}divCartWithNoValue" onclick="incrementValue('{{ item.name }}')"
                             type="button" class="divCart"><img class="cartIcon"
-                                src="{{ url_for('static',filename='/assets/images/icon-add-to-cart.svg') }}"
+                                src="{{ url_for('static',filename='./assets/images/icon-add-to-cart.svg') }}"
                                 alt="{{ item.name }}"><span>Add to Cart</span></button>
                     </div>
                     <div class="section">

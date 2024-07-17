@@ -100,10 +100,10 @@
     },
     {
         "image": {
-            "thumbnail": "./assets/images/toffe-cake.png",
-            "mobile": "./assets/images/toffe-cake.png",
-            "tablet": "./assets/images/toffe-cake.png",
-            "desktop": "./assets/images/toffe-cake.png"
+            "thumbnail": "./assets/images/toffe-cake.webp",
+            "mobile": "./assets/images/toffe-cake.webp",
+            "tablet": "./assets/images/toffe-cake.webp",
+            "desktop": "./assets/images/toffe-cake.webp"
         },
         "name": "Toffee Cake",
         "category": "Cake",
@@ -111,10 +111,10 @@
     },
     {
         "image": {
-            "thumbnail": "./assets/images/pavlova.png",
-            "mobile": "./assets/images/pavlova.png",
-            "tablet": "./assets/images/pavlova.png",
-            "desktop": "./assets/images/pavlova.png"
+            "thumbnail": "./assets/images/pavlova.webp",
+            "mobile": "./assets/images/pavlova.webp",
+            "tablet": "./assets/images/pavlova.webp",
+            "desktop": "./assets/images/pavlova.webp"
         },
         "name": "Pavlova",
         "category": "Meringue dessert",

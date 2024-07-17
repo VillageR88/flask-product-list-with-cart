@@ -18,4 +18,4 @@ __pycache__/
 # Database files
 *.sqlite3
 
-/app/notes
+/app/notes/

@@ -8,8 +8,11 @@ load_dotenv()
 def create_app():
     app = Flask(__name__)
     app.config['ENV'] = os.getenv('ENV')
+    
+    data_file_path = os.path.join(os.path.dirname(__file__), 'data', 'data.json')
 
-    with open('data/data.json', 'r' , encoding='utf-8') as file:
+
+    with open(data_file_path, 'r' , encoding='utf-8') as file:
         data = json.load(file)
 
     @app.route('/')
