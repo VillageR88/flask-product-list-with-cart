@@ -32,6 +32,7 @@
                 <li id="summaryLi" class="{{ item.name }}cartElement cartElement cartElement2nd">
                     <div>
                         <div>
+                            <!-- TO DO IMAGE SIZES FOR SCREENS -->
                             <img class="imageThumbnail"
                                 src="{{ url_for('static', filename='/' + item.image.thumbnail) }}"
                                 alt="{{ item.name }}">
@@ -171,7 +172,11 @@
             </div>
         </div>
     </form>
+    {% if config['ENV'] == 'development' %}
     <script src="{{ url_for('static', filename='scripts/main.ts') }}"></script>
+    {% else %}
+    <script src="{{ url_for('static', filename='dist/main.js') }}"></script>
+    {% endif %}
 </body>
 
 </html>

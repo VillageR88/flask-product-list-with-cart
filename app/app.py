@@ -1,8 +1,13 @@
 from flask import Flask, render_template, send_from_directory
+from dotenv import load_dotenv
+import os
 import json
+
+load_dotenv()
 
 def create_app():
     app = Flask(__name__)
+    app.config['ENV'] = os.getenv('ENV')
 
     with open('data/data.json', 'r' , encoding='utf-8') as file:
         data = json.load(file)
