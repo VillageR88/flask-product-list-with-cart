@@ -65,8 +65,14 @@
                 {% for item in data %}
                 <li class="dessertElement" id="{{ item.id }}">
                     <div>
-                        <img class="imageProduct imageDesktop"
-                            src="{{ url_for('static', filename='/' + item.image.desktop) }}" alt="{{ item.name }}">
+                        <picture>
+                            <source media="(min-width: 1281px)"
+                                srcset="{{ url_for('static', filename='/' + item.image.desktop) }}">
+                            <source media="(min-width: 641px)"
+                                srcset="{{ url_for('static', filename='/' + item.image.tablet) }}">
+                            <img class="imageProduct" src="{{ url_for('static', filename='/' + item.image.mobile) }}"
+                                alt="{{ item.name }}">
+                        </picture>
                         <div id="{{ item.name }}divCartWithValue" class="divCartWithValue">
                             <button aria-label="{{ item.name }} decrease" onclick="decrementValue('{{ item.name }}')"
                                 class="cartButton" type="button" id="decrement"><svg xmlns="http://www.w3.org/2000/svg"
