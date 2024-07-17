@@ -87,24 +87,42 @@ function deleteItem(id) {
 function showPopup() {
     const popupElement = document.getElementsByClassName("popup")[0];
     if (popupElement instanceof HTMLElement) {
-        popupElement.style.display = 'flex';
+        popupElement.style.visibility = 'visible';
     }
 }
 
 function startNewOrder() {
-    const cartElements = document.getElementsByClassName("cartElement");
-    const cartElementItemCount = document.getElementsByClassName("itemCount");
+    const allButtons = document.querySelectorAll("button");
+
+    const cartElements1st = document.getElementsByClassName("cartElement1st");
+    const cartElements2nd = document.getElementsByClassName("cartElement2nd");
+    const cartElementItemCount1st = document.getElementsByClassName("itemCount1st");
+    const cartElementItemCount2nd = document.getElementsByClassName("itemCount2nd");
     const divCartWithValueArray = document.getElementsByClassName("divCartWithValue");
     const popupElement = document.getElementsByClassName("popup")[0];
     if (cartItemsCount?.textContent) cartItemsCount.textContent = '0';
-    for (const cartElement of cartElements) {
+    for (const cartElement of cartElements1st) {
         if (cartElement instanceof HTMLElement) cartElement.style.display = 'none';
-    }
-    for (const count of cartElementItemCount) {
+    } for (const count of cartElementItemCount1st) {
         count.textContent = '';
     }
+    for (const button of allButtons) {
+        if (button instanceof HTMLElement) button.style.pointerEvents = 'none';
+    }
+    setTimeout(() => {
+        for (const cartElement of cartElements2nd) {
+            if (cartElement instanceof HTMLElement) cartElement.style.display = 'none';
+        }
+        for (const count of cartElementItemCount2nd) {
+            count.textContent = '';
+        }
+        for (const button of allButtons) {
+            if (button instanceof HTMLElement) button.style.pointerEvents = 'auto';
+        }
+    }, 1000);
+
     if (popupElement instanceof HTMLElement) {
-        popupElement.style.display = 'none';
+        popupElement.style.visibility = 'hidden';
     }
     for (const totalValue of totalValueArray) {
         totalValue.textContent = '';
@@ -112,16 +130,12 @@ function startNewOrder() {
     for (const counter of counterArray) {
         if (counter instanceof HTMLElement) counter.textContent = '0';
     }
-    for (const rowSummary of document.getElementsByClassName("rowSummary")) {
-        if (rowSummary instanceof HTMLElement) rowSummary.textContent = '0';
-    }
+
     for (const divCartWithValue of divCartWithValueArray) {
         if (divCartWithValue instanceof HTMLElement)
             divCartWithValue.style.display = 'none';
     }
-    for (const count of cartElementItemCount) {
-        count.textContent = '';
-    }
+
     for (const rowSummary of document.getElementsByClassName("rowSummary")) {
         if (rowSummary instanceof HTMLElement) rowSummary.textContent = '0';
     }

@@ -11,6 +11,7 @@
 </head>
 
 <body>
+    <div id="mask"></div>
     <div class="popup">
         <div>
             <div>
@@ -28,7 +29,7 @@
             </div>
             <ul id="summaryUl">
                 {% for item in data %}
-                <li id="summaryLi" class="{{ item.name }}cartElement cartElement">
+                <li id="summaryLi" class="{{ item.name }}cartElement cartElement cartElement2nd">
                     <div>
                         <div>
                             <img class="imageThumbnail"
@@ -37,7 +38,7 @@
                             <div>
                                 <span>{{ item.name }}</span>
                                 <div>
-                                    <span class="{{ item.name }}itemCount itemCount"></span>
+                                    <span class="{{ item.name }}itemCount itemCount itemCount2nd"></span>
                                     <span>@ ${{ "%.2f" | format(item.price) }}</span>
                                 </div>
                             </div>
@@ -52,7 +53,8 @@
                     <span class="totalValue">0</span>
                 </div>
             </ul>
-            <button onclick="startNewOrder()" id="startNewOrder" class="buttonType1" type="button">Start New Order</button>
+            <button onclick="startNewOrder()" id="startNewOrder" class="buttonType1" type="button">Start New
+                Order</button>
         </div>
     </div>
     <form class="mainComponent">
@@ -100,12 +102,13 @@
             <span id="cartItemsCount">0</span>
             <ul>
                 {% for item in data %}
-                <li id="{{ item.name }}cartElement" class="{{ item.name }}cartElement cartElement">
+                <li id="{{ item.name }}cartElement" class="{{ item.name }}cartElement cartElement cartElement1st">
                     <div>
                         <h3>{{ item.name }}</h3>
                         <div>
                             <div class="cartRow">
-                                <span id="{{ item.name }}itemCount" class="{{ item.name }}itemCount itemCount"></span>
+                                <span id="{{ item.name }}itemCount"
+                                    class="{{ item.name }}itemCount itemCount itemCount1st"></span>
                                 <div id="moneySide">
                                     <span>@ ${{ "%.2f" | format(item.price) }}</span>
                                     <span class="{{ item.name }}rowSummary"
