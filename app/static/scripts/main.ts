@@ -1,5 +1,7 @@
 const popup = document.getElementsByClassName("popup")[0];
 const totalValueArray = document.getElementsByClassName("totalValue");
+const totalValue = document.getElementById("totalValue");
+const totalValue2nd = document.getElementById("totalValue2nd");
 const cartItemsCount = document.getElementById("cartItemsCount");
 const counterArray = document.getElementsByClassName("counter");
 
@@ -93,7 +95,6 @@ function showPopup() {
 
 function startNewOrder() {
     const allButtons = document.querySelectorAll("button");
-
     const cartElements1st = document.getElementsByClassName("cartElement1st");
     const cartElements2nd = document.getElementsByClassName("cartElement2nd");
     const cartElementItemCount1st = document.getElementsByClassName("itemCount1st");
@@ -106,6 +107,7 @@ function startNewOrder() {
     } for (const count of cartElementItemCount1st) {
         count.textContent = '';
     }
+    if (totalValue instanceof HTMLElement) totalValue.textContent = '';
     for (const button of allButtons) {
         if (button instanceof HTMLElement) button.style.pointerEvents = 'none';
     }
@@ -116,6 +118,7 @@ function startNewOrder() {
         for (const count of cartElementItemCount2nd) {
             count.textContent = '';
         }
+        if (totalValue2nd instanceof HTMLElement) totalValue2nd.textContent = '';
         for (const button of allButtons) {
             if (button instanceof HTMLElement) button.style.pointerEvents = 'auto';
         }
@@ -124,9 +127,9 @@ function startNewOrder() {
     if (popupElement instanceof HTMLElement) {
         popupElement.style.visibility = 'hidden';
     }
-    for (const totalValue of totalValueArray) {
-        totalValue.textContent = '';
-    }
+    // for (const totalValue of totalValueArray) {
+    //     totalValue.textContent = '';
+    // }
     for (const counter of counterArray) {
         if (counter instanceof HTMLElement) counter.textContent = '0';
     }
