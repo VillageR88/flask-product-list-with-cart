@@ -38,10 +38,192 @@ li {
   flex-direction: column;
 }
 
-.imageDesktop {
+body:has(.popup[style*="visibility: visible"]) #mask {
+  display: flex;
+}
+body:has(.popup[style*="visibility: visible"]) {
+  overflow-y: clip;
+}
+body:has(.popup[style*="visibility: visible"]) .popup {
+  pointer-events: all;
+  transform: none;
+}
+body:has(.popup[style*="visibility: hidden"]) .popup {
+  opacity: 0;
+  transition: all 2s;
+}
+
+#mask {
+  display: none;
+  position: fixed;
+  width: 100%;
+  min-height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  box-sizing: border-box;
+}
+
+.popup {
+  visibility: hidden;
+  top: 0;
+  position: fixed;
+  /*debugging*/
+  display: flex;
+  min-height: 100%;
+  width: 100%;
+  padding: 0%;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  transform: translateY(100vh);
+  transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.popup > div {
+  display: flex;
+  flex-direction: column;
+  max-width: 592px;
+  max-height: 100vh;
+  width: 100%;
+  background-color: white;
+  border-radius: 12px;
+  box-sizing: border-box;
+  padding: 40px;
+  gap: 32px;
+  overflow: auto;
+}
+
+.popup > div > div:nth-child(1) {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+section > p {
+  font-size: 16px;
+}
+
+.popup > div > ul {
+  border-radius: 8px;
+  background-color: var(--rose-50);
+  padding: 24px;
+}
+
+.popup > div > ul > li {
+  display: none;
+  flex-direction: column;
+  margin: 0px;
+}
+
+.popup > div > ul > li > hr {
+  margin-block: 16px;
+}
+
+.popup > div > ul > li:last-of-type > hr {
+  margin-block: 24px;
+}
+
+.popup > div > ul > li > div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.popup > div > ul > li > div > div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+}
+
+.popup > div > ul > li > div > div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+}
+
+.popup > div > ul > li > div > div > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.popup > div > ul > li > div > div > div > span {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--rose-900);
+}
+
+.popup > div > ul > li > div > div > div > div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+.popup > div > ul > li > div > span {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--rose-900);
+}
+
+.popup > div > ul > li > div > span::before {
+  content: "$";
+}
+
+.popup > div > ul > div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.popup > div > ul > div > span:nth-child(1) {
+  font-size: 14px;
+  color: var(--rose-900);
+}
+
+.popup > div > ul > div > span:nth-child(2) {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--rose-900);
+}
+
+.popup > div > ul > div > span:nth-child(2)::before {
+  content: "$";
+}
+
+.imageThumbnail {
+  width: 48px;
+  height: auto;
+  border-radius: 4px;
+}
+
+#summaryLi {
+  width: 100%;
+}
+
+.dessertElement:has(.divCartWithValue[style*="display: flex"]) .imageProduct {
+  outline: 2px solid var(--red);
+}
+
+.imageProduct {
   width: 100%;
   max-width: 250px;
   border-radius: 8px;
+  height: auto;
 }
 
 body {
@@ -52,17 +234,16 @@ body {
   width: 100%;
   min-height: 100vh;
   background-color: var(--rose-50);
-  overflow-x: hidden;
   box-sizing: border-box;
   font-family: var(--redHatText);
+  /* padding-inline: 112px; */
+  padding-block: 88px;
 }
 
 form {
   display: flex;
   flex-direction: row;
   gap: 32px;
-  padding-inline: 112px;
-  padding-block: 88px;
   width: 100%;
   height: 100%;
   max-width: 1216px;
@@ -75,6 +256,10 @@ form {
   max-width: 800px;
   height: 100%;
   gap: 32px;
+}
+
+.firstWrapper ul {
+  justify-content: center;
 }
 
 .divCart {
@@ -99,7 +284,6 @@ img.cartIcon {
   width: 21px;
   height: 20px;
   display: block;
-  z-index: 3;
 }
 
 .divCart:hover {
@@ -129,10 +313,6 @@ img.cartIcon {
   box-sizing: border-box;
 }
 
-input[type="number"] {
-  appearance: textfield;
-}
-
 button.cartButton {
   display: flex;
   align-items: center;
@@ -148,10 +328,21 @@ button.cartButton {
   border: 2px solid white;
   width: 20px;
   height: 20px;
+  transition: 0.15s ease-in-out;
 }
 
 button.cartButton:hover {
   cursor: pointer;
+  background-color: white;
+}
+
+button.cartButton svg {
+  fill: white;
+  transition: 0.15s ease-in-out;
+}
+
+button.cartButton:hover svg {
+  fill: var(--red);
 }
 
 .counter {
@@ -176,16 +367,23 @@ button.cartButton:hover {
   gap: 16px;
 }
 
+.section {
+  flex-direction: column;
+  gap: 4px;
+}
+
 li div {
   display: flex;
   flex-direction: column;
 }
 
-h1 {
+h1,
+section h2 {
   color: var(--rose-900);
   font-size: 40px;
   letter-spacing: 0.12px;
   margin: 0px;
+  font-weight: 700;
 }
 
 p {
@@ -304,39 +502,35 @@ hr {
   display: none;
 }
 
-/* .dessertElement:has(.counter[value*="0"]) {
-  border: 1px solid var(--red);
-} */
-
-.cartRow {
+div div .cartRow {
   display: flex;
   flex-direction: row;
-  gap: 8px;
+  gap: 16px;
 }
 
-.cartRow span:nth-child(1) {
+.itemCount {
   font-size: 14px;
   font-weight: 600;
   color: var(--red);
 }
 
-.cartRow span:nth-child(1)::after {
+.itemCount::after {
   content: "x";
 }
 
-.cartRow span:nth-child(2) {
+#moneySide span:nth-child(1) {
   font-size: 14px;
   font-weight: 400;
   color: var(--rose-500);
 }
 
-.cartRow span:nth-child(3) {
+#moneySide span:nth-child(2) {
   font-size: 14px;
   font-weight: 600;
   color: var(--rose-500);
 }
 
-.cartRow span:nth-child(3)::before {
+#moneySide span:nth-child(2)::before {
   content: "$";
 }
 
@@ -391,26 +585,115 @@ body:has(.divCartWithValue[style*="display: flex"]) #infoCarbonNeutral {
   padding-inline: 0.8px;
 }
 
-body:has(.divCartWithValue[style*="display: flex"]) #confirmOrder {
+body:has(.divCartWithValue[style*="display: flex"]) .buttonType1 {
   display: flex;
 }
 
-#confirmOrder {
-  height: 53px;
+.buttonType1 {
+  min-height: 53px;
   width: 100%;
   border-radius: 999px;
   border: none;
   background-color: var(--red);
   color: white;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 500;
   transition: 0.15s ease-in-out;
   display: none;
   justify-content: center;
   align-items: center;
 }
 
-#confirmOrder:hover {
+.buttonType1:hover {
   cursor: pointer;
-  background-color: #952C0B;
+  background-color: #952c0b;
+}
+
+body:has(.divCartWithValue[style*="display: flex"]) #cartPlaceholder {
+  display: none;
+}
+
+#cartPlaceholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 195px;
+  gap: 16px;
+}
+
+#cartPlaceholder span {
+  color: var(--rose-500);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+@media (max-width: 1280px) {
+  body {
+    padding-inline: 32px;
+  }
+
+  form {
+    max-width: 688px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .popup > div {
+    max-width: 688px;
+  }
+  .secondWrapper {
+    max-width: 688px;
+  }
+
+  .imageProduct {
+    width: 100%;
+    max-width: 213px;
+  }
+
+  .dessertsGrid {
+    grid-template-columns: repeat(auto-fit, 213px);
+  }
+}
+@media (max-width: 768px) {
+  form {
+    max-width: 450px;
+  }
+  .popup > div {
+    max-width: 450px;
+  }
+}
+
+@media (max-width: 640px) {
+  body {
+    padding: 24px;
+  }
+
+  form {
+    max-width: 327px;
+  }
+
+  .popup > div {
+    max-width: 100%;
+    padding-top: 40px;
+    padding-inline: 24px;
+    padding-bottom: 24px;
+  }
+
+  .dessertsGrid {
+    grid-template-columns: auto;
+  }
+
+  .dessertElement {
+    max-width: 327px;
+    height: 100%;
+  }
+
+  li {
+    max-height: 100%;
+  }
+
+  .imageProduct {
+    max-width: 327px;
+  }
 }
