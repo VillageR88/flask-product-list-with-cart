@@ -141,5 +141,16 @@
         "name": "Kiwi Dessert",
         "category": "Dessert",
         "price": 6.50
+    },
+    {
+        "image": {
+            "thumbnail": "./assets/images/snickers-cake.jpeg",
+            "mobile": "./assets/images/snickers-cake.jpeg",
+            "tablet": "./assets/images/snickers-cake.jpeg",
+            "desktop": "./assets/images/snickers-cake.jpeg"
+        },
+        "name": "Snickers Cake",
+        "category": "Cake",
+        "price": 6.50
     }
 ]
