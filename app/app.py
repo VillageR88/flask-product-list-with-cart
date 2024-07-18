@@ -1,7 +1,11 @@
-from flask import Flask, render_template, send_from_directory
+from flask import Flask, render_template, send_from_directory, request, jsonify
 from dotenv import load_dotenv
+from openai import OpenAI
 import os
 import json
+client = OpenAI(
+    api_key=os.environ.get("OPENAI_API_KEY"),
+)
 
 load_dotenv()
 
@@ -25,14 +29,35 @@ def create_app():
         }
         return render_template('index.html', **context)
     
-    @app.route('/chat')
-    def chat():
+    @app.route('/chat', methods=['GET'])
+    def chat_page():
         context = {
             'siteTitle': "Chat with AI",
             'mainTitle': "Chat with AI",
         }
         return render_template('chat.html', **context)
-            
+
+    @app.route('/chat', methods=['POST'])
+    def chat():
+        data = request.json
+        user_input = data.get('input', '')
+        
+        if not user_input:
+            return jsonify({'error': 'No input provided'}), 400
+        
+        try:
+            completion = client.chat.completions.create(
+                model="gpt-4o-mini",
+                messages=[
+                    {"role": "user", "content": user_input}
+                ]
+            )
+            anwser = completion.choices[0].message
+            return jsonify({'response': answer})
+        
+        except Exception as e:
+            return jsonify({'error': str(e)}), 500
+
 
     @app.route('/robots.txt')
     def robots_txt():

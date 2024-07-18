@@ -70,7 +70,7 @@ form {
   height: 100%;
 }
 
-#anwserBox {
+#answerBox {
   width: 100%;
   resize: none;
   padding: 8px;
@@ -120,18 +120,22 @@ form {
 .buttonType1 {
   position: absolute;
   right: 10px;
-  height: 30px;
-  width: 30px;
+  height: 32px;
+  width: 32px;
   border-radius: 999px;
   border: none;
   background-color: var(--red);
   color: white;
-  font-size: 16px;
   font-weight: 500;
   transition: 0.15s ease-in-out;
-  justify-content: center;
-  align-items: center;
-  margin-block: 12px;
+  padding: 0%;
+  align-self: center;
+  box-sizing: border-box;
+  margin: 0px;
+}
+
+body:has(.disabled[style*="display: none"]) .buttonType1 {
+  background-color: #c4c4c4;
 }
 
 .buttonType1Mod1 {
@@ -145,13 +149,24 @@ form {
   font-size: 16px;
   font-weight: 500;
   transition: 0.15s ease-in-out;
-  display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.buttonType1:hover,
+.buttonType1:hover:not(:disabled),
 .buttonType1Mod1:hover {
   cursor: pointer;
   background-color: #952c0b;
+}
+
+.buttonType1:disabled {
+  opacity: 0.75;
+}
+
+#iconSend {
+  display: flex;
+}
+
+#iconStop {
+  display: none;
 }
