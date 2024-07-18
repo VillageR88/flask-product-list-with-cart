@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Product list with cart">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='./css/style.css') }}">
     <link rel="icon" href="{{ url_for('static', filename='assets/images/favicon-32x32.png') }}" sizes="32x32"
         type="image/png">
     <title>{{ siteTitle }}</title>
@@ -65,7 +65,7 @@
             <div>
                 <h1>{{ mainTitle }}</h1>
                 <button title="Dessert Generator" class="buttonType1 buttonType1mod flex w-fit"
-                    onclick="window.location = '/chat'" type="button">
+                    onclick="window.location = './chat/'" type="button">
                     <?xml version="1.0" encoding="UTF-8"?><span>Generator</span>
                     <svg class="AIIcon" width="40px" height="40px" viewBox="0 0 512 512" version="1.1"
                         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">

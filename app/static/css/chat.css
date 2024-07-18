@@ -54,6 +54,7 @@ body > div > div {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 }
 
 form {
@@ -84,6 +85,7 @@ form {
   overflow-wrap: break-word;
   white-space: normal;
   word-break: break-word;
+  font-size: 16px;
 }
 
 #inputContainer {
@@ -169,4 +171,10 @@ body:has(.disabled[style*="display: none"]) .buttonType1 {
 
 #iconStop {
   display: none;
+}
+
+@media (max-width: 640px) {
+  body {
+    min-height: 100dvh;
+  }
 }

@@ -52,7 +52,7 @@ def create_app():
                     {"role": "user", "content": user_input}
                 ]
             )
-            anwser = completion.choices[0].message
+            answer = completion.choices[0].message
             return jsonify({'response': answer})
         
         except Exception as e:
