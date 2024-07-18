@@ -29,7 +29,7 @@ def create_app():
         }
         return render_template('index.html', **context)
     
-    @app.route('/chat', methods=['GET'])
+    @app.route('/chat/', methods=['GET'])
     def chat_page():
         context = {
             'siteTitle': "Chat with AI",
@@ -37,7 +37,7 @@ def create_app():
         }
         return render_template('chat.html', **context)
 
-    @app.route('/chat', methods=['POST'])
+    @app.route('/chat/', methods=['POST'])
     def chat():
         data = request.json
         user_input = data.get('input', '')

@@ -5,9 +5,7 @@ var totalValue = document.getElementById("totalValue");
 var totalValue2nd = document.getElementById("totalValue2nd");
 var cartItemsCount = document.getElementById("cartItemsCount");
 var counterArray = document.getElementsByClassName("counter");
-/**
- * @param {string} id
- */
+// @ts-ignore
 function decrementValue(id) {
     var itemPrice = document.getElementById("".concat(id, "itemPrice"));
     var dessertCount = document.getElementById("".concat(id, "dessertCount"));
@@ -42,9 +40,7 @@ function decrementValue(id) {
         }
     }
 }
-/**
- * @param {string} id
- */
+// @ts-ignore
 function incrementValue(id) {
     var itemPrice = document.getElementById("".concat(id, "itemPrice"));
     var dessertCount = document.getElementById("".concat(id, "dessertCount"));
@@ -77,9 +73,7 @@ function incrementValue(id) {
         }
     }
 }
-/**
- * @param {string} id
- */
+// @ts-ignore
 function deleteItem(id) {
     var itemPrice = document.getElementById("".concat(id, "itemPrice"));
     var dessertCount = document.getElementById("".concat(id, "dessertCount"));
