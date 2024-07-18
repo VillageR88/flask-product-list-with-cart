@@ -262,6 +262,14 @@ form {
   justify-content: center;
 }
 
+.firstWrapper > div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 40px;
+  box-sizing: border-box;
+}
+
 .divCart {
   max-width: 160px;
   width: 100%;
@@ -589,6 +597,11 @@ body:has(.divCartWithValue[style*="display: flex"]) .buttonType1 {
   display: flex;
 }
 
+.AIIcon {
+  width: 40px;
+  height: 40px;
+}
+
 .buttonType1 {
   min-height: 53px;
   width: 100%;
@@ -607,6 +620,20 @@ body:has(.divCartWithValue[style*="display: flex"]) .buttonType1 {
 .buttonType1:hover {
   cursor: pointer;
   background-color: #952c0b;
+}
+
+.buttonType1mod {
+  padding-inline: 24px;
+  gap: 6px;
+  fill: white;
+}
+
+.flex {
+  display: flex;
+}
+
+.w-fit {
+  width: fit-content;
 }
 
 body:has(.divCartWithValue[style*="display: flex"]) #cartPlaceholder {
@@ -669,6 +696,10 @@ body:has(.divCartWithValue[style*="display: flex"]) #cartPlaceholder {
     padding: 24px;
   }
 
+  .buttonType1mod > span {
+    display: none;
+  }
+
   form {
     max-width: 327px;
   }
@@ -695,5 +726,18 @@ body:has(.divCartWithValue[style*="display: flex"]) #cartPlaceholder {
 
   .imageProduct {
     max-width: 327px;
+  }
+
+  .firstWrapper > div {
+    justify-content: space-between;
+  }
+
+  .buttonType1mod {
+    padding-inline: 12px;
+  }
+
+  .AIIcon {
+    width: 30px;
+    height: 30px;
   }
 }

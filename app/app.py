@@ -24,6 +24,15 @@ def create_app():
             'data': data
         }
         return render_template('index.html', **context)
+    
+    @app.route('/chat')
+    def chat():
+        context = {
+            'siteTitle': "Chat with AI",
+            'mainTitle': "Chat with AI",
+        }
+        return render_template('chat.html', **context)
+            
 
     @app.route('/robots.txt')
     def robots_txt():

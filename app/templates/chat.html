@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Product list with cart">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/chat.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='assets/images/favicon-32x32.png') }}" sizes="32x32"
+        type="image/png">
+    <title>{{ siteTitle }}</title>
+</head>
+
+<body>
+    <div>
+        <div>
+            <h1>AI Generator</h1>
+            <button onclick="window.location = '/'" type="button" class="buttonType1Mod1">Exit</button>
+        </div>
+        <form action="">
+            <div readonly name="" id="anwserBox">
+
+            </div>
+            <div id="inputContainer">
+                <textarea placeholder="Write your message here ..." oninput="autoResize()" onkeyup="autoResize()"
+                    name="" id="textInput"></textarea>
+                <button type="submit" class="buttonType1" id="sendButton">></button>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
+
+<script>
+    function autoResize() {
+        document.getElementById('textInput').style.height = '56px';
+        document.getElementById('textInput').style.height = document.getElementById('textInput').scrollHeight + 'px';
+    }
+</script>
