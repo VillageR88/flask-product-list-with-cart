@@ -64,7 +64,9 @@
         const textInput = document.getElementById('textInput');
         const data = { input: textInput.value };
 
-        fetch('/chat', {
+        const url = '/chat/';
+
+        fetch(url, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

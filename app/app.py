@@ -1,16 +1,21 @@
 from flask import Flask, render_template, send_from_directory, request, jsonify
 from dotenv import load_dotenv
 from openai import OpenAI
+from flask_cors import CORS
+
 import os
 import json
+
+load_dotenv()
+
 client = OpenAI(
     api_key=os.environ.get("OPENAI_API_KEY"),
 )
 
-load_dotenv()
 
 def create_app():
     app = Flask(__name__)
+    CORS(app)
     app.config['ENV'] = os.getenv('ENV')
     
     data_file_path = os.path.join(os.path.dirname(__file__), 'data', 'data.json')
