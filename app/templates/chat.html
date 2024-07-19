@@ -64,7 +64,7 @@
         const textInput = document.getElementById('textInput');
         const data = { input: textInput.value };
 
-        const url = '/api/chat/'; // Updated URL to match Flask endpoint
+        const url = '/chat/';
 
         fetch(url, {
             method: 'POST',
