@@ -1,16 +1,21 @@
 from flask import Flask, render_template, send_from_directory, request, jsonify
 from dotenv import load_dotenv
 from openai import OpenAI
+from flask_cors import CORS
+
 import os
 import json
+
+load_dotenv()
+
 client = OpenAI(
     api_key=os.environ.get("OPENAI_API_KEY"),
 )
 
-load_dotenv()
 
 def create_app():
     app = Flask(__name__)
+    CORS(app)
     app.config['ENV'] = os.getenv('ENV')
     
     data_file_path = os.path.join(os.path.dirname(__file__), 'data', 'data.json')
@@ -29,7 +34,7 @@ def create_app():
         }
         return render_template('index.html', **context)
     
-    @app.route('/chat/', methods=['GET'])
+    @app.route('/api/chat/', methods=['GET'])
     def chat_page():
         context = {
             'siteTitle': "Chat with AI",
@@ -37,7 +42,7 @@ def create_app():
         }
         return render_template('chat.html', **context)
 
-    @app.route('/chat/', methods=['POST'])
+    @app.route('/api/chat/', methods=['POST'])
     def chat():
         data = request.json
         user_input = data.get('input', '')
