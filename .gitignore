@@ -21,3 +21,4 @@ __pycache__/
 /app/notes/
 
 app/build/
+/node_modules/
