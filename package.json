@@ -5,6 +5,10 @@
         "build": "tsc && python3 app/freeze.py && mkdir -p public && cp -r app/build/* public/"
     },
     "devDependencies": {
+        "@types/nodemailer": "^6.4.15",
         "typescript": "^4.0.0"
+    },
+    "dependencies": {
+        "nodemailer": "^6.9.14"
     }
 }

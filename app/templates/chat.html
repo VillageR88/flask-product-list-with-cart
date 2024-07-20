@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Product list with cart">
-    <link rel="stylesheet" href="{{ '../static/css/chat.css' }}">
+    <link rel="stylesheet" href="{{ '../../static/css/chat.css' }}">
     <link rel="icon" href="{{ url_for('static', filename='assets/images/favicon-32x32.png') }}" sizes="32x32"
         type="image/png">
     <link rel="prefetch" href="../">
@@ -18,18 +18,17 @@
             <h1>AI Generator</h1>
             <a rel="prefetch" href="../" class="buttonType1Mod1">Exit</a>
         </div>
-        <form onsubmit="sendData(event)">
+        <form action="/api/chat/" method="post">
             <div readonly name="" id="answerBox">
                 Hi! <br>
                 <br>
-                Chat is currently disabled due to API key requirements and restrictions. It will be available soon. You
-                will then be able to generate dessert images and recipes based on your input.
-                <br>
-                Some of these products will be added later to the list.
+                Write in the chat with a request for the product you would like to see on the list, and it might appear!
+                <br> <br>
+                <strong>Every message you send will be delivered</strong>.
             </div>
             <div id="inputContainer">
                 <textarea placeholder="Type here ..." onkeypress="handleKeyUp(event)" oninput="autoResize()"
-                    onkeyup="autoResize()" name="" id="textInput"></textarea>
+                    onkeyup="autoResize()" name="textInput" id="textInput"></textarea>
                 <button aria-label="Send message" type="submit" class="buttonType1" id="sendButton"><svg id="iconSend"
                         xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 32 32"
                         class="icon-2xl">
@@ -56,50 +55,10 @@
         document.getElementById('textInput').style.height = document.getElementById('textInput').scrollHeight + 'px';
     }
 
-    function sendData(event) {
-        event.preventDefault(); // Prevent the default form submission
-        document.getElementById('textInput').setAttribute('disabled', 'disabled');
-        document.getElementById('sendButton').setAttribute('disabled', 'disabled');
-        document.getElementById('iconSend').style.display = 'none';
-        document.getElementById('iconStop').style.display = 'flex';
-        const textInput = document.getElementById('textInput');
-        const data = { input: textInput.value };
-
-        const url = '/chat/';
-
-        fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
-            .then(response => {
-                if (!response.ok) {
-                    return response.text().then(text => {
-                        throw new Error(text || response.statusText);
-                    });
-                }
-                return response.json();
-            })
-            .then(data => {
-                document.getElementById('answerBox').innerText = data.response;
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                document.getElementById('answerBox').innerText = 'Error: ' + error.message;
-            }).finally(() => {
-                document.getElementById('textInput').removeAttribute('disabled');
-                document.getElementById('sendButton').removeAttribute('disabled');
-                document.getElementById('iconSend').style.display = 'flex';
-                document.getElementById('iconStop').style.display = 'none';
-            })
-    }
-
     function handleKeyUp(event) {
         if (event.key === 'Enter' && !event.shiftKey) {
             event.preventDefault(); // Prevent the default behavior of Enter key
-            document.querySelector('form').dispatchEvent(new Event('submit', { cancelable: true }));
+            document.querySelector('form').submit();
             document.getElementById('textInput').value = '';
         }
     }
