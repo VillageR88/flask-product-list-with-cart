@@ -19,5 +19,6 @@ __pycache__/
 *.sqlite3
 
 /app/notes/
+/node_modules/
 
 app/build/
