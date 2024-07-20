@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{{ '../static/css/chat.css' }}">
     <link rel="icon" href="{{ url_for('static', filename='assets/images/favicon-32x32.png') }}" sizes="32x32"
         type="image/png">
+    <link rel="prefetch" href="../">
     <title>{{ siteTitle }}</title>
 </head>
 
@@ -15,7 +16,7 @@
     <div>
         <div>
             <h1>AI Generator</h1>
-            <button onclick="window.location = '../'" type="button" class="buttonType1Mod1">Exit</button>
+            <a rel="prefetch" href="../" class="buttonType1Mod1">Exit</a>
         </div>
         <form onsubmit="sendData(event)">
             <div readonly name="" id="answerBox">

@@ -16,6 +16,10 @@
   --redHatText: "RedHatText", sans-serif;
 }
 
+a {
+  text-decoration: none;
+}
+
 h1,
 section h2 {
   color: var(--rose-900);
@@ -141,6 +145,7 @@ body:has(.disabled[style*="display: none"]) .buttonType1 {
 }
 
 .buttonType1Mod1 {
+  display: flex;
   height: 53px;
   padding-inline: 40px;
   width: fit-content;
