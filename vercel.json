@@ -2,14 +2,27 @@
     "version": 2,
     "builds": [
         {
-            "src": "api/chat.py",
+            "src": "app/freeze.py",
             "use": "@vercel/python"
+        },
+        {
+            "src": "public/**/*",
+            "use": "@vercel/static"
         }
     ],
     "routes": [
         {
             "src": "/api/chat/",
-            "dest": "/api/chat.py"
+            "dest": "/app/freeze.py"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "/public/$1"
         }
-    ]
+    ],
+    "build": {
+        "env": {
+            "NODE_ENV": "production"
+        }
+    }
 }
