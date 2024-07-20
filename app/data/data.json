@@ -152,5 +152,49 @@
         "name": "Snickers Cake",
         "category": "Cake",
         "price": 6.50
+    },
+    {
+        "image": {
+            "thumbnail": "./assets/images/image-chocolate-lava-cake.jpeg",
+            "mobile": "./assets/images/image-chocolate-lava-cake.jpeg",
+            "tablet": "./assets/images/image-chocolate-lava-cake.jpeg",
+            "desktop": "./assets/images/image-chocolate-lava-cake.jpeg"
+        },
+        "name": "Chocolate Lava Cake",
+        "category": "Cake",
+        "price": 6.50
+    },
+    {
+        "image": {
+            "thumbnail": "./assets/images/image-black-forest-cake.jpeg",
+            "mobile": "./assets/images/image-black-forest-cake.jpeg",
+            "tablet": "./assets/images/image-black-forest-cake.jpeg",
+            "desktop": "./assets/images/image-black-forest-cake.jpeg"
+        },
+        "name": "Black Forest Cake",
+        "category": "Cake",
+        "price": 6.50
+    },
+    {
+        "image": {
+            "thumbnail": "./assets/images/image-mango-cheesecake.jpeg",
+            "mobile": "./assets/images/image-mango-cheesecake.jpeg",
+            "tablet": "./assets/images/image-mango-cheesecake.jpeg",
+            "desktop": "./assets/images/image-mango-cheesecake.jpeg"
+        },
+        "name": "Mango Cheesecake",
+        "category": "Cake",
+        "price": 6.00
+    },
+    {
+        "image": {
+            "thumbnail": "./assets/images/image-crêpes-suzette.jpeg",
+            "mobile": "./assets/images/image-crêpes-suzette.jpeg",
+            "tablet": "./assets/images/image-crêpes-suzette.jpeg",
+            "desktop": "./assets/images/image-crêpes-suzette.jpeg"
+        },
+        "name": "Crêpes Suzette",
+        "category": "Dessert",
+        "price": 5.50
     }
 ]
