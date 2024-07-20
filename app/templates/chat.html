@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{ '../../static/css/chat.css' }}">
     <link rel="icon" href="{{ url_for('static', filename='assets/images/favicon-32x32.png') }}" sizes="32x32"
         type="image/png">
-    <link rel="prefetch" href="../">
+    <link rel="prefetch" href="../../">
     <title>{{ siteTitle }}</title>
 </head>
 
@@ -16,9 +16,9 @@
     <div>
         <div>
             <h1>AI Generator</h1>
-            <a rel="prefetch" href="../" class="buttonType1Mod1">Exit</a>
+            <a rel="prefetch" href="../../" class="buttonType1Mod1">Exit</a>
         </div>
-        <form action="./api/chat/" method="post">
+        <form action="/api/chat/" method="post">
             <div readonly name="" id="answerBox">
                 Hi! <br>
                 <br>

@@ -45,7 +45,7 @@ def create_app():
         }
         return render_template('chat.html', **context)
 
-    @app.route('/chat/', methods=['POST'])
+    @app.route('/api/chat/', methods=['POST'])
     def contact_form():
         form_data = request.form
 
