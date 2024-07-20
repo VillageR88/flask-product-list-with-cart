@@ -31,10 +31,9 @@
             </div>
             <ul id="summaryUl">
                 {% for item in data %}
-                <li id="summaryLi" class="{{ item.name }}cartElement cartElement cartElement2nd">
+                <li id="{{ item.name }}summaryLi" class="{{ item.name }}cartElement cartElement cartElement2nd">
                     <div>
                         <div>
-                            <!-- TO DO IMAGE SIZES FOR SCREENS -->
                             <img class="imageThumbnail"
                                 src="{{ url_for('static', filename='./' + item.image.thumbnail) }}"
                                 alt="{{ item.name }}">
@@ -61,7 +60,7 @@
             </button>
         </div>
     </div>
-    <form class="mainComponent">
+    <main class="mainComponent">
         <div class="firstWrapper">
             <div>
                 <h1>{{ mainTitle }}</h1>
@@ -85,7 +84,7 @@
             </div>
             <ul id="dessertsGrid" class="dessertsGrid">
                 {% for item in data %}
-                <li class="dessertElement" id="{{ item.id }}">
+                <li class="dessertElement">
                     <div>
                         <picture>
                             <source media="(min-width: 1281px)"
@@ -97,16 +96,16 @@
                         </picture>
                         <div id="{{ item.name }}divCartWithValue" class="divCartWithValue">
                             <button aria-label="{{ item.name }} decrease" onclick="decrementValue('{{ item.name }}')"
-                                class="cartButton" type="button" id="decrement"><svg xmlns="http://www.w3.org/2000/svg"
-                                    width="10" height="2" fill="none" viewBox="0 0 10 2">
+                                class="cartButton" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="10"
+                                    height="2" fill="none" viewBox="0 0 10 2">
                                     <path d="M0 .375h10v1.25H0V.375Z" />
                                 </svg></button>
-                            <span type="number" value="0" id="{{ item.name }}dessertCount" class="counter">
+                            <span id="{{ item.name }}dessertCount" class="counter">
                                 0
                             </span>
                             <button aria-label="{{ item.name }} increase" onclick="incrementValue('{{ item.name }}')"
-                                class="cartButton" type="button" id="increment"><svg xmlns="http://www.w3.org/2000/svg"
-                                    width="10" height="10" fill="none" viewBox="0 0 10 10">
+                                class="cartButton" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="10"
+                                    height="10" fill="none" viewBox="0 0 10 10">
                                     <path d="M10 4.375H5.625V0h-1.25v4.375H0v1.25h4.375V10h1.25V5.625H10v-1.25Z" />
                                 </svg></button>
                         </div>
@@ -138,13 +137,13 @@
                             <div class="cartRow">
                                 <span id="{{ item.name }}itemCount"
                                     class="{{ item.name }}itemCount itemCount itemCount1st"></span>
-                                <div id="moneySide">
+                                <div class="moneySide">
                                     <span>@ ${{ "%.2f" | format(item.price) }}</span>
                                     <span class="{{ item.name }}rowSummary"
                                         id="{{ item.name }}rowSummary">{{(item.price)}}</span>
                                 </div>
                             </div>
-                            <button id="deleteButton" title="Remove {{item.name}} from cart"
+                            <button class="deleteButton" title="Remove {{item.name}} from cart"
                                 onclick="deleteItem('{{ item.name }}')" type="button">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="none"
                                     viewBox="0 0 10 10">
@@ -199,7 +198,7 @@
                 <span>Your added items will appear here</span>
             </div>
         </div>
-    </form>
+    </main>
     {% if config['ENV'] == 'development' %}
     <script src="{{ url_for('static', filename='scripts/main.ts') }}"></script>
     {% else %}

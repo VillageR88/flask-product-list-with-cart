@@ -23,6 +23,8 @@ def create_app():
 
     with open(data_file_path, 'r' , encoding='utf-8') as file:
         data = json.load(file)
+        for item in data:
+            item['name'] = item['name'].replace(' ', '-')
 
     @app.route('/')
     def index():
