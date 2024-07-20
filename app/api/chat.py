@@ -1,97 +1,68 @@
-from flask import Flask, render_template, send_from_directory, request, jsonify
+from flask import Flask, request, jsonify
 from dotenv import load_dotenv
-from openai import OpenAI
 from flask_cors import CORS
-
 import os
-import json
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+from http.server import BaseHTTPRequestHandler
 
 load_dotenv()
 
-client = OpenAI(
-    api_key=os.environ.get("OPENAI_API_KEY"),
-)
+app = Flask(__name__)
+CORS(app)
+app.config['ENV'] = os.getenv('ENV')
 
-def create_app():
-    app = Flask(__name__)
-    CORS(app)
-    app.config['ENV'] = os.getenv('ENV')
-    
-    data_file_path = os.path.join(os.path.dirname(__file__), 'data', 'data.json')
+@app.route('/api/chat/', methods=['POST'])
+def contact_form():
+    form_data = request.form
 
-    with open(data_file_path, 'r' , encoding='utf-8') as file:
-        data = json.load(file)
-        for item in data:
-            item['name'] = item['name'].replace(' ', '-')
+    result = create_invoice_contact_form(form_data)
+    return jsonify(result)
 
-    @app.route('/')
-    def index():
-        context = {
-            'siteTitle': "Product list with cart",
-            'mainTitle': "Desserts",
-            'addToCartText' : "Add to Cart",
-            'data': data
-        }
-        return render_template('index.html', **context)
-    
-    @app.route('/api/chat/', methods=['GET'])
-    def chat_page():
-        context = {
-            'siteTitle': "Chat with AI",
-            'mainTitle': "Chat with AI",
-        }
-        return render_template('chat.html', **context)
+def create_invoice_contact_form(form_data):
+    smtp_server = 'smtp.gmail.com'
+    smtp_port = 587
+    email_user = os.getenv('EMAIL')
+    email_password = os.getenv('PASSWORD')
+    email_to = os.getenv('MY_EMAIL')
 
-    @app.route('/chat/', methods=['POST'])
-    def contact_form():
-        form_data = request.form
+    if not email_user or not email_password or not email_to:
+        return {'error': 'Email configuration is missing'}
 
-        result = create_invoice_contact_form(form_data)
-        return jsonify(result)
+    chat_message = form_data.get('textInput')
+    if not chat_message:
+        return {'error': 'No message provided'}
 
-    def create_invoice_contact_form(form_data):
-        smtp_server = 'smtp.gmail.com'
-        smtp_port = 587
-        email_user = os.getenv('EMAIL')
-        email_password = os.getenv('PASSWORD')
-        email_to = os.getenv('MY_EMAIL')
+    html_content = chat_message
 
-        if not email_user or not email_password or not email_to:
-            return {'error': 'Email configuration is missing'}
+    msg = MIMEMultipart()
+    msg['From'] = email_user
+    msg['To'] = email_to
+    msg['Subject'] = 'Contact Form'
+    msg.attach(MIMEText(html_content, 'html'))
 
-        chat_message = form_data.get('textInput')
-        if not chat_message:
-            return {'error': 'No message provided'}
+    try:
+        server = smtplib.SMTP(smtp_server, smtp_port)
+        server.starttls()
+        server.login(email_user, email_password)
+        server.sendmail(email_user, email_to, msg.as_string())
+        server.quit()
+    except Exception as e:
+        print(f'there was an error: {e}')
+        return {'error': str(e)}
 
-        html_content = chat_message
-
-        msg = MIMEMultipart()
-        msg['From'] = email_user
-        msg['To'] = email_to
-        msg['Subject'] = 'Contact Form'
-        msg.attach(MIMEText(html_content, 'html'))
-
-        try:
-            server = smtplib.SMTP(smtp_server, smtp_port)
-            server.starttls()
-            server.login(email_user, email_password)
-            server.sendmail(email_user, email_to, msg.as_string())
-            server.quit()
-        except Exception as e:
-            print(f'there was an error: {e}')
-            return {'error': str(e)}
-
-        return {'status': 'Email sent successfully'}
-
-    @app.route('/robots.txt')
-    def robots_txt():
-        return send_from_directory(app.static_folder, 'robots.txt')
- 
-    return app
+    return {'status': 'Email sent successfully'}
 
 # Vercel serverless function handler
 def handler(event, context):
     return app(event, context)
+
+# HTTP server handler
+class CustomHandler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        self.send_response(200)
+        self.send_header('Content-type', 'text/plain')
+        self.end_headers()
+        self.wfile.write('Hello, world!'.encode('utf-8'))
+        return
